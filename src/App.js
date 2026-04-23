@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navbar, Nav, Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { 
   FaMobile, 
   FaLaptop, 
@@ -20,6 +20,9 @@ import {
 import AOS from 'aos';
 import emailjs from '@emailjs/browser';
 import 'aos/dist/aos.css';
+import './CustomNavbar.css';
+import './RwandanImageGallery.css';
+import Footer from './Footer';
 
 function App() {
   
@@ -45,6 +48,162 @@ function App() {
     // Initialize EmailJS with your public key
     emailjs.init("Dn6w5-kRtXr99jX4v");
     
+    // 3D Artistic Background Image Rotation with Dynamic Motion
+    const backgroundImages = document.querySelectorAll('.background-image');
+    let currentImageIndex = 0;
+    const transitions = ['fade-in', 'slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right'];
+    const motionPatterns = ['zoom-pan', 'rotate-float', 'wave-motion', 'spiral-motion', 'pulse-motion'];
+    
+    const artisticRotateBackgroundImages = () => {
+      const outgoingImage = backgroundImages[currentImageIndex];
+      const nextIndex = (currentImageIndex + 1) % backgroundImages.length;
+      const incomingImage = backgroundImages[nextIndex];
+      
+      // Random transition effect
+      const randomTransition = transitions[Math.floor(Math.random() * transitions.length)];
+      const randomMotion = motionPatterns[Math.floor(Math.random() * motionPatterns.length)];
+      
+      // Hide outgoing image with artistic effect
+      if (outgoingImage) {
+        outgoingImage.classList.remove(...transitions);
+        outgoingImage.classList.add(randomTransition.includes('slide-out') ? randomTransition : 'slide-out-left');
+        
+        // Add exit motion
+        outgoingImage.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        outgoingImage.style.transform = 'scale(0.95) rotate(-2deg) translateY(20px)';
+        outgoingImage.style.opacity = '0.7';
+        
+        setTimeout(() => {
+          outgoingImage.style.display = 'none';
+          outgoingImage.classList.remove(...transitions);
+          outgoingImage.style.transform = '';
+          outgoingImage.style.opacity = '';
+        }, 800);
+      }
+      
+      // Show incoming image with artistic effect
+      if (incomingImage) {
+        incomingImage.style.display = 'block';
+        incomingImage.classList.remove(...transitions);
+        incomingImage.classList.add(randomTransition.includes('slide-in') ? randomTransition : 'slide-in-right');
+        
+        // Apply dynamic motion pattern
+        incomingImage.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        switch(randomMotion) {
+          case 'zoom-pan':
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.08) translateX(-3%) translateY(-2%)';
+            }, 100);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.03) translateX(2%) translateY(1%)';
+            }, 2000);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1) translateX(0) translateY(0)';
+            }, 4000);
+            break;
+            
+          case 'rotate-float':
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.05) rotate(1deg) translateY(-10px)';
+            }, 100);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.02) rotate(-0.5deg) translateY(5px)';
+            }, 2000);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1) rotate(0deg) translateY(0)';
+            }, 4000);
+            break;
+            
+          case 'wave-motion':
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.06) skewX(2deg) translateX(-4%)';
+            }, 100);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.03) skewX(-1deg) translateX(3%)';
+            }, 2000);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1) skewX(0deg) translateX(0)';
+            }, 4000);
+            break;
+            
+          case 'spiral-motion':
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.07) rotate(2deg) translateX(-2%) translateY(-3%)';
+            }, 100);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.02) rotate(-1deg) translateX(2%) translateY(2%)';
+            }, 2000);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1) rotate(0deg) translateX(0) translateY(0)';
+            }, 4000);
+            break;
+            
+          case 'pulse-motion':
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.09)';
+              incomingImage.style.filter = 'brightness(1.1) contrast(1.05)';
+            }, 100);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.02)';
+              incomingImage.style.filter = 'brightness(1.05) contrast(1.02)';
+            }, 2000);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1)';
+              incomingImage.style.filter = 'brightness(1) contrast(1)';
+            }, 4000);
+            break;
+            
+          default:
+            // Default motion pattern
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.05) translateX(-2%)';
+            }, 100);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1.02) translateX(1%)';
+            }, 2000);
+            setTimeout(() => {
+              incomingImage.style.transform = 'scale(1) translateX(0)';
+            }, 4000);
+            break;
+        }
+      }
+      
+      currentImageIndex = nextIndex;
+    };
+    
+    // Start artistic image rotation with varied timing
+    let rotationTimeout;
+    const getRandomInterval = () => 5000 + Math.random() * 3000; // 5-8 seconds
+    const scheduleNextRotation = () => {
+      artisticRotateBackgroundImages();
+      rotationTimeout = setTimeout(scheduleNextRotation, getRandomInterval());
+    };
+    
+    scheduleNextRotation();
+    
+    // Mobile Menu Toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    const toggleMobileMenu = () => {
+      navToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    };
+    
+    if (navToggle) {
+      navToggle.addEventListener('click', toggleMobileMenu);
+    }
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+    
     // Lazy loading for images
     const images = document.querySelectorAll('img[loading="lazy"]');
     const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -61,7 +220,11 @@ function App() {
     
     // Cleanup
     return () => {
+      clearTimeout(rotationTimeout);
       images.forEach(img => imageObserver.unobserve(img));
+      if (navToggle) {
+        navToggle.removeEventListener('click', toggleMobileMenu);
+      }
     };
   }, []);
 
@@ -148,70 +311,18 @@ function App() {
     },
     {
       icon: <FaHeadset />,
-      title: "Technical Support",
       description: "24/7 technical support and maintenance services to ensure your systems run smoothly and efficiently."
     }
   ];
 
-  const products = [
-    {
-      id: 1,
-      category: "software",
-      title: "Custom Software Development",
-      price: "From $5,000",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400",
-      description: "Tailored software solutions designed specifically for your business needs and requirements."
-    },
-    {
-      id: 2,
-      category: "software",
-      title: "Mobile App Development",
-      price: "From $3,000",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400",
-      description: "Native and cross-platform mobile applications for iOS and Android platforms."
-    },
-    {
-      id: 3,
-      category: "software",
-      title: "Web Application Development",
-      price: "From $4,000",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
-      description: "Scalable web applications with modern frameworks and cloud integration."
-    },
-    {
-      id: 4,
-      category: "software",
-      title: "AI & Machine Learning Solutions",
-      price: "From $8,000",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400",
-      description: "Advanced AI integration and machine learning models for business automation."
-    },
-    {
-      id: 5,
-      category: "software",
-      title: "Data Analysis & BI Tools",
-      price: "From $6,000",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400",
-      description: "Comprehensive data analysis and business intelligence solutions."
-    },
-    {
-      id: 6,
-      category: "software",
-      title: "ERP System Development",
-      price: "From $15,000",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400",
-      description: "Enterprise Resource Planning systems tailored to your business processes."
-    }
-  ];
-
-  const testimonials = [
-    {
-      text: "Cloud Sync Rwanda helped us build a professional e-commerce platform that sells flowers and cosmetics. Their team is incredibly professional and the results speak for themselves - our sales have significantly boosted since working with them. They truly understand e-commerce and delivered exactly what we needed.",
-      author: "Akazuba Florist",
-      position: "Owner, Akazuba Florist - E-commerce Store",
-      rating: 5
-    }
-  ];
+    const testimonials = [
+      {
+        text: "Cloud Sync Rwanda helped us build a professional e-commerce platform that sells flowers and cosmetics. Their team is incredibly professional and the results speak for themselves - our sales have significantly boosted since working with them. They truly understand e-commerce and delivered exactly what we needed.",
+        author: "Akazuba Florist",
+        position: "Owner, Akazuba Florist - E-commerce Store",
+        rating: 5
+      }
+    ];
 
   const features = [
     {
@@ -246,86 +357,137 @@ function App() {
     }
   ];
 
+  const stories = [
+    {
+      id: 1,
+      image: "https://picsum.photos/400/300?random=1",
+      title: "Cloud Sync Rwanda Founded",
+      year: "2020",
+      subtitle: "The Beginning",
+      content: "Cloud Sync Rwanda was established with a vision to bring cutting-edge technology solutions to businesses in Rwanda and across East Africa. Our journey started with a small team of passionate developers.",
+      quote: "Technology should empower businesses, not complicate them."
+    },
+    {
+      id: 2,
+      image: "https://picsum.photos/400/300?random=2",
+      title: "First Major Project",
+      year: "2021",
+      subtitle: "Breaking Ground",
+      content: "We successfully delivered our first major e-commerce platform for a local florist, which became a cornerstone project that showcased our capabilities and commitment to excellence.",
+      quote: "Success is built one satisfied client at a time."
+    },
+    {
+      id: 3,
+      image: "https://picsum.photos/400/300?random=3",
+      title: "Expansion and Growth",
+      year: "2023",
+      subtitle: "Scaling New Heights",
+      content: "Our team expanded significantly, and we moved into a larger office space. We also launched several innovative solutions including cloud management tools and mobile applications.",
+      quote: "Growth is not just about size, but about impact and quality."
+    }
+  ];
+
 
   return (
     <div className="App">
-      {/* Navigation */}
-      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
-        <Container>
-          <Navbar.Brand 
-            href="#home" 
-            className="d-flex align-items-center"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            <span className="fw-bold fs-4">Cloud Sync</span>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-              <Nav.Link 
-                href="#home"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Home
-              </Nav.Link>
-              <Nav.Link 
-                href="#about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                About
-              </Nav.Link>
-              <Nav.Link 
-                href="#services"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Services
-              </Nav.Link>
-              <Nav.Link 
-                href="#products"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Products
-              </Nav.Link>
-              <Nav.Link 
-                href="#testimonials"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Testimonials
-              </Nav.Link>
-              <Nav.Link 
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Contact
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      {/* Rwandan Cultural Patterns Background */}
+      <div className="rwandan-patterns" style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        zIndex: 0,
+        opacity: 0.03,
+        backgroundImage: `
+          repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(245, 166, 35, 0.1) 35px, rgba(245, 166, 35, 0.1) 70px),
+          repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(0, 122, 62, 0.1) 35px, rgba(0, 122, 62, 0.1) 70px)
+        `,
+        backgroundSize: '100px 100px'
+      }}></div>
+
+      {/* Galaxy Stars Background */}
+      <div className="galaxy-stars" style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        zIndex: 0
+      }}>
+        {[...Array(500)].map((_, i) => (
+          <div key={i} style={{
+            position: 'absolute',
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            width: `${Math.random() * 4 + 1}px`,
+            height: `${Math.random() * 4 + 1}px`,
+            backgroundColor: ['#ffffff', '#fffacd', '#ffd700', '#87ceeb', '#ffa500'][Math.floor(Math.random() * 5)],
+            borderRadius: '50%',
+            opacity: Math.random() * 0.9 + 0.1,
+            animation: `twinkle ${1 + Math.random() * 4}s infinite`,
+            boxShadow: `0 0 ${Math.random() * 15}px rgba(255, 255, 255, 0.9)`
+          }}></div>
+        ))}
+      </div>
+
+      
+      {/* Custom Gold Navigation */}
+      <nav className="custom-navbar" style={{position: 'relative', zIndex: 10}}>
+        <div className="nav-container">
+          <div className="nav-brand" style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+            <img 
+              src="/images/Real Cloud Sync logo no bg.png" 
+              alt="Cloud Sync Logo" 
+              style={{
+                width: '40px',
+                height: '40px',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3))'
+              }}
+            />
+            <span className="nav-title">Cloud Sync</span>
+          </div>
+          <ul className="nav-menu">
+            <li><a href="#home" className="nav-link">Home</a></li>
+            <li><a href="#about" className="nav-link">About</a></li>
+            <li><a href="#services" className="nav-link">Services</a></li>
+            <li><a href="#products" className="nav-link">Products</a></li>
+            <li><a href="#testimonials" className="nav-link">Testimonials</a></li>
+            <li><a href="#contact" className="nav-link">Contact</a></li>
+          </ul>
+          <div className="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
 
       {/* Hero Section */}
       <section id="home" className="hero-section">
+        {/* 3D Background Animation - Temporarily Disabled */}
+        <div className="rwandan-background-gallery">
+          <div className="background-gallery-main">
+            <div className="background-image-container">
+              {/* Background images temporarily disabled for testing */}
+            </div>
+          </div>
+        </div>
+        
+        {/* Particle Effects */}
+        <div className="particles">
+          {[...Array(50)].map((_, i) => (
+            <div key={i} className="particle" style={{ 
+              left: `${Math.random() * 100}%`, 
+              animationDelay: `${Math.random() * 20}s`,
+              animationDuration: `${15 + Math.random() * 10}s` 
+            }}></div>
+          ))}
+        </div>
+
         <Container>
           <Row className="align-items-center">
             <Col lg={6} data-aos="fade-right">
@@ -373,7 +535,7 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-5">
+      <section id="services" className="py-5 unified-background">
         <Container>
           <div className="section-title" data-aos="fade-up">
             <h2>Our Services</h2>
@@ -381,8 +543,8 @@ function App() {
           </div>
           <Row>
             {services.map((service, index) => (
-              <Col lg={4} md={6} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
-                <div className="service-card">
+              <Col lg={4} md={6} key={index} className="mb-4">
+                <div className="service-card" data-service-number={index + 1}>
                   <div className="service-icon">
                     {service.icon}
                   </div>
@@ -396,15 +558,15 @@ function App() {
       </section>
 
       {/* Features Section */}
-      <section className="py-5" style={{backgroundColor: 'var(--light-bg)'}}>
+      <section className="py-5 unified-background">
         <Container>
-          <div className="section-title" data-aos="fade-up">
+          <div className="section-title">
             <h2>Why Choose Cloud Sync</h2>
             <p>We deliver excellence through innovation and expertise</p>
           </div>
-          <Row>
+          <Row className="feature-card-container">
             {features.map((feature, index) => (
-              <Col lg={4} md={6} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+              <Col lg={4} md={6} key={index}>
                 <div className="feature-card">
                   <div className="feature-icon">
                     {feature.icon}
@@ -419,7 +581,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="about-section">
+      <section id="about" className="unified-background">
         <Container>
           <Row className="align-items-center">
             <Col lg={6} data-aos="fade-right">
@@ -455,27 +617,42 @@ function App() {
         </Container>
       </section>
 
-      {/* Products Section */}
-      <section id="products" className="menu-section">
+      {/* Our Story Section */}
+      <section id="products" className="py-5 unified-background">
         <Container>
-          <div className="section-title" data-aos="fade-up">
-            <h2>Our Products & Solutions</h2>
-            <p>Discover our range of software solutions and digital services</p>
+          <div className="section-title">
+            <h2>Our Story</h2>
+            <p>The journey of Cloud Sync Rwanda - from vision to impact</p>
           </div>
           <Row>
-            {products.map((product, index) => (
-              <Col lg={4} md={6} key={product.id} data-aos="fade-up" data-aos-delay={index * 100}>
-                <div className="menu-item">
-                  <img 
-                    src={product.image} 
-                    alt={`${product.title} - Cloud Sync technology solution`} 
-                    loading="lazy"
-                    width="400"
-                    height="300"
-                  />
-                  <div className="menu-item-content">
-                    <h5 className="menu-item-title">{product.title}</h5>
-                    <p className="menu-item-description">{product.description}</p>
+            {stories.map((story, index) => (
+              <Col lg={4} md={6} key={story.id} className="mb-4">
+                <div className="story-card" style={{
+                  maxWidth: '340px',
+                  margin: '0 auto',
+                  height: 'auto',
+                  transform: 'scale(0.95)',
+                  transformOrigin: 'top center'
+                }}>
+                  <div className="story-header">
+                    <img 
+                      src={story.image} 
+                      alt={story.title} 
+                      className="story-image"
+                      loading="lazy"
+                      width="100%"
+                      height="180"
+                      style={{objectFit: 'cover'}}
+                    />
+                    <div className="story-year">{story.year}</div>
+                  </div>
+                  <div className="story-content" style={{padding: '0.8rem'}}>
+                    <h3 style={{fontSize: '1rem', marginBottom: '0.3rem'}}>{story.title}</h3>
+                    <h4 className="story-subtitle" style={{fontSize: '0.85rem', marginBottom: '0.3rem', color: 'var(--primary-color)'}}>{story.subtitle}</h4>
+                    <p className="story-text" style={{fontSize: '0.8rem', lineHeight: '1.3', marginBottom: '0.3rem'}}>{story.content.substring(0, 100)}...</p>
+                    <div className="story-quote">
+                      <p style={{fontSize: '0.75rem', fontStyle: 'italic', color: '#666'}}>"{story.quote}"</p>
+                    </div>
                   </div>
                 </div>
               </Col>
@@ -485,19 +662,19 @@ function App() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="testimonials-section">
+      <section id="testimonials" className="unified-background">
         <Container>
-          <div className="section-title" data-aos="fade-up">
+          <div className="section-title">
             <h2>What Our Clients Say</h2>
             <p>Testimonials from satisfied customers across Rwanda and East Africa</p>
           </div>
           <Row>
             {testimonials.map((testimonial, index) => (
-              <Col lg={4} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+              <Col lg={4} key={index}>
                 <div className="testimonial-card">
                   <div className="mb-3">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <span key={i} style={{color: 'var(--primary-color)'}}>★</span>
+                      <span key={i} style={{color: 'var(--primary-color)'}}>¡</span>
                     ))}
                   </div>
                   <p className="testimonial-text">"{testimonial.text}"</p>
@@ -511,14 +688,14 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="contact-section">
+      <section id="contact" className="py-5 unified-background">
         <Container>
-          <div className="section-title" data-aos="fade-up">
+          <div className="section-title">
             <h2>Contact Us</h2>
             <p>Get in touch with us for your software development needs</p>
           </div>
           <Row>
-            <Col lg={8} data-aos="fade-right">
+            <Col lg={8}>
               <Form onSubmit={handleContactSubmit}>
                 <Row>
                   <Col md={6}>
@@ -607,7 +784,7 @@ function App() {
                      target="_blank" 
                      rel="noopener noreferrer"
                      style={{ color: '#E4405F', textDecoration: 'none' }}>
-                    📸 @cloudsync.c
+                    ¡ @cloudsync.c
                   </a>
                 </p>
               </div>
@@ -616,51 +793,8 @@ function App() {
         </Container>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <Container>
-          <Row>
-            <Col lg={3} md={6}>
-              <div className="text-center text-lg-start">
-                <h5>Cloud Sync</h5>
-                <p>Leading technology solutions provider in Rwanda, specializing in software development, AI integration, and data analysis. Empowering businesses with innovative digital solutions since 2022.</p>
-              </div>
-            </Col>
-            <Col lg={3} md={6}>
-              <h5>Useful Links</h5>
-              <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </Col>
-            <Col lg={3} md={6}>
-              <h5>Our Services</h5>
-              <ul>
-                <li>Mobile App Development</li>
-                <li>Web Applications</li>
-                <li>AI Integration</li>
-                <li>Data Analysis</li>
-                <li>Custom Software</li>
-              </ul>
-            </Col>
-            <Col lg={3} md={6}>
-              <h5>Contact Info</h5>
-              <div className="contact-info" style={{ background: 'transparent' }}>
-                <p>Kigali, Rwanda</p>
-                <p>Phone: +250 782 194 138</p>
-                <p>Email: cloudsync.rw@gmail.com</p>
-                <p><strong>Instagram:</strong> <a href="https://www.instagram.com/cloudsync.c?igsh=MXd4d3Z0YXk3bHB0NA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">@cloudsync.c</a></p>
-              </div>
-            </Col>
-          </Row>
-          <div className="footer-bottom">
-            <p>© 2024 Cloud Sync. All Rights Reserved. | Based in Kigali, Rwanda.</p>
-          </div>
-        </Container>
-      </footer>
+      {/* New Footer Component */}
+      <Footer />
 
     </div>
   );

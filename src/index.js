@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'aos/dist/aos.css';
 import './index.css';
+import './App.css';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
