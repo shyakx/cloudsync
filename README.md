@@ -2,7 +2,7 @@
 
 A modern, responsive website for Cloud Sync, a technology company based in Kigali, Rwanda. The website showcases the company's services in software development, AI integration, data analysis, and electronic device distribution.
 
-## 🚀 Features
+## Features
 
 - **Modern Design**: Inspired by the Restaurantly theme with a professional tech-focused aesthetic
 - **Responsive Layout**: Fully responsive design that works on all devices
@@ -12,7 +12,7 @@ A modern, responsive website for Cloud Sync, a technology company based in Kigal
 - **Contact Form**: Interactive contact form for customer inquiries
 - **Professional Sections**: Hero, Services, About, Contact, and Footer sections
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **React 18**: Modern React with hooks and functional components
 - **Bootstrap 5**: CSS framework for responsive design
@@ -21,14 +21,14 @@ A modern, responsive website for Cloud Sync, a technology company based in Kigal
 - **AOS**: Animate On Scroll library
 - **CSS3**: Custom styling with CSS variables
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before running this project, make sure you have the following installed:
 
 - Node.js (version 14 or higher)
 - npm (comes with Node.js)
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 1. **Clone or download the project files**
 
@@ -59,7 +59,7 @@ cloud-sync-website/
 └── README.md          # Project documentation
 ```
 
-## 🎨 Customization
+## Customization
 
 ### Colors
 The website uses CSS variables for easy color customization. Edit the `:root` section in `src/index.css`:
@@ -110,7 +110,7 @@ npm run build
 
 The website includes placeholder contact information for Cloud Sync:
 - **Location**: Kigali, Rwanda
-- **Phone**: +250 788 123 456
+- **Phone**: +250 782 194 138
 - **Email**: cloudsync.rw@gmail.com
 
 ## 🔧 Available Scripts
@@ -120,11 +120,11 @@ The website includes placeholder contact information for Cloud Sync:
 - `npm test` - Launches the test runner
 - `npm run eject` - Ejects from Create React App (not recommended)
 
-## 📄 License
+## License
 
 This project is created for Cloud Sync. Feel free to modify and use for your own business needs.
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the project
 2. Create your feature branch
