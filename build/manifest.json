@@ -1,15 +1,22 @@
 {
-  "short_name": "Cloud Sync",
-  "name": "Cloud Sync - Technology Solutions",
+  "short_name": "CloudSync",
+  "name": "CloudSync — Technology Solutions",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "images/NEWLOGO.png",
+      "sizes": "500x500",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/NEWLOGO.png",
+      "sizes": "500x500",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#cda45e",
-  "background_color": "#ffffff"
-} 
+  "theme_color": "#FFCF00",
+  "background_color": "#FFFFFF"
+}
