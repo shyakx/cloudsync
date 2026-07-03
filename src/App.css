@@ -1,7 +1,7 @@
 /* CloudSync Premium Design System */
 
 .App {
-  background: #fff;
+  background: transparent;
   position: relative;
 }
 
@@ -390,17 +390,17 @@
 
 .stats-section--designed .stat-item {
   padding: 32px 20px;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  z-index: var(--layer-content, 2);
 }
 
-.stats-section--designed .stat-item:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-soft);
+.stats-section--designed .stat-item.card-3d:hover {
+  box-shadow: var(--depth-shadow-lg);
 }
 
 .stats-section--designed .stat-item:nth-child(2) .stat-value {
@@ -568,6 +568,8 @@
   grid-template-columns: 1.05fr 0.95fr;
   gap: 64px;
   align-items: center;
+  position: relative;
+  z-index: var(--layer-content, 2);
 }
 
 .about-pillars {

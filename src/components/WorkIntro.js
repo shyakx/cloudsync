@@ -6,7 +6,7 @@ const WorkIntro = () => (
     <div className="work-intro__line" aria-hidden="true" />
     <div className="cs-container work-intro__inner">
       <span className="work-intro__index">01 — 04</span>
-      <h2 className="work-intro__title">
+      <h2 className="work-intro__title heading-3d">
         Production software,<br />
         <em>not mockups.</em>
       </h2>

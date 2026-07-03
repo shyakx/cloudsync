@@ -1,9 +1,3 @@
-.eng-matrix {
-  background: rgba(250, 250, 250, 0.7);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-
 .eng-matrix__header {
   margin-bottom: 48px;
 }
@@ -25,36 +19,21 @@
 
 .eng-matrix__cell {
   position: relative;
-  padding: 28px 24px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+  padding: 0;
+  overflow: visible;
   transform-style: preserve-3d;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
 }
 
-.eng-matrix__cell:hover {
-  transform: rotateX(4deg) rotateY(-4deg) translateZ(12px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
-}
-
-.eng-matrix__cell--large {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-.eng-matrix__cell--medium {
-  grid-column: span 2;
+.eng-matrix__body {
+  position: relative;
+  z-index: 2;
+  padding: 28px 24px;
+  height: 100%;
 }
 
 .eng-matrix__mesh {
-  position: absolute;
-  inset: 0;
+  border-radius: inherit;
   opacity: 0.35;
-  pointer-events: none;
 }
 
 .eng-matrix__cell--cloud .eng-matrix__mesh {
@@ -96,7 +75,6 @@
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  position: relative;
 }
 
 .eng-matrix__cell--large h3 {
@@ -108,8 +86,16 @@
   font-size: 14px;
   line-height: 1.55;
   color: var(--text-muted);
-  position: relative;
   max-width: 36ch;
+}
+
+.eng-matrix__cell--large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.eng-matrix__cell--medium {
+  grid-column: span 2;
 }
 
 @media (max-width: 900px) {
@@ -136,7 +122,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .eng-matrix__cell:hover {
+  .eng-matrix__cell.card-3d:hover {
     transform: none;
   }
 }

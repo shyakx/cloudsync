@@ -43,7 +43,7 @@ const HomeHero = () => (
           </div>
         </div>
 
-        <div className="home-hero__stage animate-fade-up animate-delay-1">
+        <div className="home-hero__stage stage-3d animate-fade-up animate-delay-1">
           <div className="home-hero__orbit" aria-hidden="true">
             <div className="home-hero__orbit-core">
               <span className="home-hero__orbit-logo">&gt;</span>

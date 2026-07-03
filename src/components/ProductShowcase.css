@@ -1,6 +1,6 @@
 .work-showcase {
   position: relative;
-  z-index: 1;
+  z-index: var(--layer-content, 2);
 }
 
 .work-slide {
@@ -12,9 +12,11 @@
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.7s ease, transform 0.7s ease;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  position: relative;
+  isolation: isolate;
 }
 
 .work-slide.is-visible {
@@ -23,7 +25,30 @@
 }
 
 .work-slide:nth-child(even) {
-  background: rgba(250, 250, 250, 0.78);
+  background: rgba(250, 250, 250, 0.52);
+}
+
+.work-slide__copy {
+  align-self: center;
+  max-width: 420px;
+  position: relative;
+  z-index: 2;
+  padding: 28px 32px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(236, 236, 236, 0.9);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 16px 48px rgba(0, 0, 0, 0.06);
+  transform-style: preserve-3d;
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+.work-slide.is-visible .work-slide__copy:hover {
+  transform: perspective(900px) rotateY(2deg) translateZ(8px);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.08);
 }
 
 .work-slide__container {
@@ -51,9 +76,37 @@
   order: 1;
 }
 
-.work-slide__copy {
-  align-self: center;
-  max-width: 420px;
+.work-slide__preview {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  min-height: 280px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  transform-style: preserve-3d;
+  perspective: 1400px;
+}
+
+.work-slide__preview::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  width: 65%;
+  height: 32px;
+  transform: translateX(-50%) rotateX(80deg);
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.1) 0%, transparent 70%);
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.work-slide__preview > * {
+  position: relative;
+  z-index: 1;
 }
 
 .work-slide__count {
@@ -111,16 +164,6 @@
 
 .work-slide__cta {
   width: fit-content;
-}
-
-.work-slide__preview {
-  height: 100%;
-  min-height: 280px;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 0;
 }
 
 @media (max-width: 960px) {

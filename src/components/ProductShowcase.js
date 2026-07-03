@@ -72,7 +72,7 @@ const ProductShowcase = () => {
                   </a>
                 </div>
 
-                <div className="work-slide__preview">
+                <div className="work-slide__preview stage-3d">
                   <ProductFrame device={product.device}>
                     {Component ? <Component /> : null}
                   </ProductFrame>

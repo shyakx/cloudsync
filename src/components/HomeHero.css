@@ -4,8 +4,9 @@
   padding: calc(var(--nav-height) + 40px) 0 0;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
   background: transparent;
+  z-index: var(--layer-content, 2);
 }
 
 .home-hero__fade {
@@ -14,9 +15,9 @@
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.92) 92%,
-    #fff 100%
+    rgba(255, 255, 255, 0.08) 45%,
+    rgba(255, 255, 255, 0.55) 88%,
+    rgba(255, 255, 255, 0.92) 100%
   );
   pointer-events: none;
   z-index: 0;
@@ -24,7 +25,7 @@
 
 .home-hero__container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   padding-bottom: 80px;
 }
@@ -38,6 +39,8 @@
 }
 
 .home-hero__copy {
+  position: relative;
+  z-index: 2;
   max-width: 580px;
 }
 
@@ -114,15 +117,33 @@
 
 /* 3D orbit stage */
 .home-hero__stage {
+  position: relative;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 420px;
-  perspective: 1000px;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.home-hero__stage::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  width: 70%;
+  height: 40px;
+  transform: translateX(-50%) rotateX(82deg);
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.14) 0%, transparent 72%);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .home-hero__orbit {
   position: relative;
+  z-index: 1;
   width: min(380px, 80vw);
   height: min(380px, 80vw);
   transform-style: preserve-3d;
@@ -148,15 +169,19 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  background: var(--bg);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
   border-radius: 50%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  transform: translateZ(48px);
-  z-index: 2;
+  transform: translateZ(56px);
+  z-index: 4;
 }
 
 .home-hero__orbit-logo {
@@ -169,6 +194,7 @@
   border-radius: 10px;
   font-size: 18px;
   font-weight: 800;
+  box-shadow: 0 4px 12px rgba(255, 207, 0, 0.35);
 }
 
 .home-hero__orbit-node {
@@ -178,29 +204,32 @@
   width: 0;
   height: 0;
   transform-style: preserve-3d;
-  transform: rotateY(calc(var(--i) * 90deg)) translateZ(165px);
+  transform: rotateY(calc(var(--i) * 90deg)) translateZ(175px);
 }
 
 .home-hero__orbit-node span {
   position: absolute;
   left: 0;
   top: 0;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(8px);
   padding: 10px 16px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.02em;
-  background: var(--bg);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: 999px;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   white-space: nowrap;
   animation: orbitCounter 22s linear infinite;
 }
 
 .home-hero__orbit-node--accent span {
-  border-color: rgba(255, 207, 0, 0.45);
-  background: rgba(255, 207, 0, 0.12);
+  border-color: rgba(255, 207, 0, 0.55);
+  background: rgba(255, 207, 0, 0.18);
+  box-shadow: 0 8px 28px rgba(255, 207, 0, 0.2);
 }
 
 @keyframes orbitSpin {
@@ -209,8 +238,8 @@
 }
 
 @keyframes orbitCounter {
-  from { transform: translate(-50%, -50%) rotateY(0deg); }
-  to { transform: translate(-50%, -50%) rotateY(-360deg); }
+  from { transform: translate(-50%, -50%) translateZ(8px) rotateY(0deg); }
+  to { transform: translate(-50%, -50%) translateZ(8px) rotateY(-360deg); }
 }
 
 @keyframes orbitTilt {

@@ -13,7 +13,8 @@
 
 .motion-section__content {
   position: relative;
-  z-index: 1;
+  z-index: var(--layer-content, 2);
+  isolation: isolate;
 }
 
 .motion-section__grid {
@@ -67,15 +68,15 @@
 }
 
 .motion-section--alt {
-  background: rgba(250, 250, 250, 0.72);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(250, 250, 250, 0.58);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .motion-section:not(.motion-section--alt) {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .motion-section--work .motion-section__orb--1 {
@@ -87,7 +88,11 @@
 }
 
 .motion-section--stats {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.motion-section--engineering {
+  background: rgba(250, 250, 250, 0.5);
 }
 
 .motion-section--contact .motion-section__orb--1 {

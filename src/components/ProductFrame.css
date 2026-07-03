@@ -7,6 +7,9 @@
   justify-content: center;
   min-height: 0;
   min-width: 0;
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
 }
 
 /* ── Laptop ── */
@@ -18,14 +21,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: rotateX(4deg);
+  transform: rotateX(6deg) translateZ(12px);
   transform-style: preserve-3d;
-  filter: drop-shadow(0 28px 48px rgba(0, 0, 0, 0.12));
+  filter: drop-shadow(0 32px 56px rgba(0, 0, 0, 0.14));
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .ps-device--laptop:hover .ps-laptop {
-  transform: rotateX(2deg) translateY(-4px);
+  transform: rotateX(3deg) translateY(-6px) translateZ(20px);
 }
 
 .ps-laptop__lid {
@@ -101,6 +104,7 @@
 /* ── Phone ── */
 .ps-phone {
   position: relative;
+  transform: translateZ(16px);
   background: linear-gradient(145deg, #2c2c2c 0%, #111 100%);
   border-radius: 44px;
   padding: 10px;
