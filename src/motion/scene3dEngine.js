@@ -125,7 +125,7 @@ function getIcoVerts(scale) {
 }
 
 function renderShapeScene(ctx, shapes, cx, cy, state, config) {
-  const { mouse, angleY, angleX, time, reducedMotion } = state;
+  const { angleY, angleX, time, reducedMotion } = state;
   const { focal } = config;
 
   shapes.forEach((shape, idx) => {
@@ -159,8 +159,8 @@ export const HERO_GEO_PRESET = {
 };
 
 export function drawHeroGeometricScene(ctx, width, height, state, config = HERO_GEO_PRESET) {
-  const { mouse, angleY, angleX, time, reducedMotion } = state;
-  const { focal, parallax } = config;
+  const { mouse, angleY, time, reducedMotion } = state;
+  const { parallax } = config;
 
   ctx.clearRect(0, 0, width, height);
 
@@ -185,7 +185,7 @@ export function drawHeroGeometricScene(ctx, width, height, state, config = HERO_
 }
 
 export function drawGeometricScene(ctx, width, height, state, config = GEO_PRESET) {
-  const { mouse, angleY, angleX, time, reducedMotion } = state;
+  const { mouse, angleY, time, reducedMotion } = state;
   const { parallax } = config;
 
   ctx.clearRect(0, 0, width, height);
