@@ -1,17 +1,25 @@
 import React, { useEffect, useRef } from 'react';
-import { GEO_PRESET, drawGeometricScene } from '../motion/scene3dEngine';
-import './SiteMotion.css';
+import { drawHeroGeometricScene, HERO_GEO_PRESET } from '../motion/scene3dEngine';
+import './HeroGeoVisual.css';
 
-const SiteMotion = () => {
+const WireCube = ({ className, style }) => (
+  <div className={`hero-geo__cube ${className || ''}`.trim()} style={style}>
+    <span className="hero-geo__cube-face hero-geo__cube-face--f" />
+    <span className="hero-geo__cube-face hero-geo__cube-face--b" />
+    <span className="hero-geo__cube-face hero-geo__cube-face--l" />
+    <span className="hero-geo__cube-face hero-geo__cube-face--r" />
+    <span className="hero-geo__cube-face hero-geo__cube-face--t" />
+    <span className="hero-geo__cube-face hero-geo__cube-face--bt" />
+  </div>
+);
+
+const HeroGeoVisual = () => {
   const canvasRef = useRef(null);
   const mouseRef = useRef({ x: 0, y: 0 });
-  const scrollRef = useRef(0);
-  const shellRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const shell = shellRef.current;
-    if (!canvas || !shell) return;
+    if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -21,7 +29,7 @@ const SiteMotion = () => {
     let height = 0;
     let rafId = 0;
     let angleY = 0;
-    let angleX = 0.28;
+    let angleX = 0.3;
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -33,24 +41,14 @@ const SiteMotion = () => {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
-    const updateOpacity = () => {
-      const vh = window.innerHeight;
-      const y = scrollRef.current;
-      let opacity = 1;
-      if (y > vh * 0.5) {
-        opacity = Math.max(0.2, 1 - (y - vh * 0.5) / (vh * 2.5));
-      }
-      shell.style.opacity = String(opacity);
-    };
-
     const draw = (time) => {
-      const angles = drawGeometricScene(ctx, width, height, {
+      const angles = drawHeroGeometricScene(ctx, width, height, {
         mouse: mouseRef.current,
         angleY,
         angleX,
         time,
         reducedMotion,
-      }, GEO_PRESET);
+      }, HERO_GEO_PRESET);
 
       angleY = angles.nextAngleY;
       angleX = angles.nextAngleX;
@@ -64,38 +62,35 @@ const SiteMotion = () => {
       };
     };
 
-    const onScroll = () => {
-      scrollRef.current = window.scrollY;
-      updateOpacity();
-    };
-
     resize();
-    updateOpacity();
     rafId = requestAnimationFrame(draw);
 
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
     window.addEventListener('mousemove', onMove, { passive: true });
-    window.addEventListener('scroll', onScroll, { passive: true });
 
     return () => {
       cancelAnimationFrame(rafId);
       ro.disconnect();
       window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('scroll', onScroll);
     };
   }, []);
 
   return (
-    <div ref={shellRef} className="site-motion site-motion--geo" aria-hidden="true">
-      <div className="site-motion__beam site-motion__beam--1" />
-      <div className="site-motion__beam site-motion__beam--2" />
-      <div className="site-motion__shard site-motion__shard--1" />
-      <div className="site-motion__shard site-motion__shard--2" />
-      <div className="site-motion__shard site-motion__shard--3" />
-      <canvas ref={canvasRef} className="site-motion__canvas" />
+    <div className="hero-geo" aria-hidden="true">
+      <div className="hero-geo__scene">
+        <div className="hero-geo__ring hero-geo__ring--1" />
+        <div className="hero-geo__ring hero-geo__ring--2" />
+        <div className="hero-geo__ring hero-geo__ring--3" />
+        <WireCube className="hero-geo__cube--a" />
+        <WireCube className="hero-geo__cube--b hero-geo__cube--accent" />
+        <WireCube className="hero-geo__cube--c" />
+        <div className="hero-geo__prism hero-geo__prism--1" />
+        <div className="hero-geo__prism hero-geo__prism--2" />
+        <canvas ref={canvasRef} className="hero-geo__canvas" />
+      </div>
     </div>
   );
 };
 
-export default SiteMotion;
+export default HeroGeoVisual;

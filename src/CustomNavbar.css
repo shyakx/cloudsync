@@ -40,6 +40,8 @@
   justify-self: start;
   text-decoration: none;
   color: inherit;
+  position: relative;
+  z-index: 2;
 }
 
 .nav-menu {

@@ -4,7 +4,7 @@ import './AboutVisual.css';
 
 const capabilities = [
   { label: 'Enterprise ERP', x: '8%', y: '12%', delay: '0s' },
-  { label: 'Mobile Banking', x: '62%', y: '8%', delay: '0.4s' },
+  { label: 'Mobile Apps', x: '62%', y: '8%', delay: '0.4s' },
   { label: 'Healthcare Systems', x: '4%', y: '58%', delay: '0.8s' },
   { label: 'Education Platforms', x: '58%', y: '62%', delay: '1.2s' },
 ];

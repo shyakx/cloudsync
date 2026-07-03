@@ -1,15 +1,16 @@
 .brand-logo {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   color: var(--text);
   text-decoration: none;
 }
 
 .brand-logo__mark {
   flex-shrink: 0;
-  color: var(--primary);
   display: block;
+  object-fit: contain;
+  background: transparent;
 }
 
 .brand-logo__name {
@@ -21,30 +22,31 @@
 
 /* Navbar */
 .brand-logo--nav .brand-logo__mark {
-  width: 64px;
-  height: auto;
+  width: 76px;
+  height: 76px;
 }
 
 .brand-logo--nav .brand-logo__name {
-  font-size: 32px;
+  font-size: 36px;
 }
 
 /* Footer */
 .brand-logo--footer .brand-logo__mark {
-  width: 48px;
-  height: auto;
+  width: 60px;
+  height: 60px;
 }
 
 .brand-logo--footer .brand-logo__name {
-  font-size: 24px;
+  font-size: 28px;
 }
 
 @media (max-width: 1024px) {
   .brand-logo--nav .brand-logo__mark {
-    width: 48px;
+    width: 60px;
+    height: 60px;
   }
 
   .brand-logo--nav .brand-logo__name {
-    font-size: 26px;
+    font-size: 28px;
   }
 }

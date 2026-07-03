@@ -1,8 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import HeroGeoVisual from './HeroGeoVisual';
 import './HomeHero.css';
-
-const orbitItems = ['ERP', 'Banking', 'Health', 'Schools'];
 
 const HomeHero = () => (
   <header id="home" className="home-hero">
@@ -17,7 +16,7 @@ const HomeHero = () => (
           </h1>
           <p className="home-hero__lead">
             CloudSync designs and ships enterprise software — from hospital systems
-            to mobile banking — with the precision of a product studio.
+            to cross-platform mobile apps — with the precision of a product studio.
           </p>
           <div className="home-hero__actions">
             <a href="#work" className="cs-btn cs-btn--primary home-hero__cta">
@@ -44,23 +43,7 @@ const HomeHero = () => (
         </div>
 
         <div className="home-hero__stage stage-3d animate-fade-up animate-delay-1">
-          <div className="home-hero__orbit" aria-hidden="true">
-            <div className="home-hero__orbit-core">
-              <span className="home-hero__orbit-logo">&gt;</span>
-              <span>CloudSync</span>
-            </div>
-            <div className="home-hero__orbit-track">
-              {orbitItems.map((label, i) => (
-                <div
-                  key={label}
-                  className={`home-hero__orbit-node${i === 1 ? ' home-hero__orbit-node--accent' : ''}`}
-                  style={{ '--i': i }}
-                >
-                  <span>{label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <HeroGeoVisual />
         </div>
       </div>
     </div>

@@ -174,7 +174,7 @@ function App() {
                 <span className="section-label">Careers</span>
                 <h2 className="about-title heading-3d">Work With Us</h2>
                 <p className="about-lead">
-                  Join engineers building production software for hospitals, banks, and enterprises.
+                  Join engineers building production software for hospitals, mobile products, and enterprises.
                 </p>
                 <ul className="culture-list panel-3d">
                   <li><CheckCircle2 size={18} /> Innovation-driven engineering culture</li>

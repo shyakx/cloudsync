@@ -51,7 +51,7 @@ const Footer = () => (
           <h4>Services</h4>
           <ul className="footer-links">
             <li><a href="#work">Enterprise Systems</a></li>
-            <li><a href="#work">Mobile Banking</a></li>
+            <li><a href="#product-mobile">Mobile Apps</a></li>
             <li><a href="#work">Healthcare Software</a></li>
             <li><a href="#work">Education Platforms</a></li>
           </ul>

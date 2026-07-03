@@ -14,7 +14,7 @@ const cells = [
     size: 'small',
     label: 'Mobile',
     title: 'iOS & Android',
-    text: 'React Native apps with offline sync.',
+    text: 'React Native and Flutter apps across fintech, retail, health, and logistics.',
     mesh: 'mobile',
   },
   {

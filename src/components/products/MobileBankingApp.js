@@ -13,7 +13,7 @@ import {
 import './MobileBankingApp.css';
 
 const MobileBankingApp = () => (
-  <div className="mba app-ui app-ui--mobile" role="img" aria-label="Mobile banking application preview">
+  <div className="mba app-ui app-ui--mobile" role="img" aria-label="Cross-platform mobile application preview">
     <div className="mba__phone">
       <div className="mba__status-bar">
         <span>9:41</span>

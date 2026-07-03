@@ -20,8 +20,9 @@ const MotionSection = ({
   >
     <div className="motion-section__ambient" aria-hidden="true">
       <div className="motion-section__grid" />
-      <div className="motion-section__orb motion-section__orb--1" />
-      <div className="motion-section__orb motion-section__orb--2" />
+      <div className="motion-section__prism motion-section__prism--1" />
+      <div className="motion-section__prism motion-section__prism--2" />
+      <div className="motion-section__prism motion-section__prism--3" />
     </div>
     <div className="motion-section__content">
       {children}

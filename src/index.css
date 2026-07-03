@@ -15,7 +15,7 @@
   --radius-lg: 20px;
   --max-width: 1280px;
   --section-padding: 140px;
-  --nav-height: 84px;
+  --nav-height: 92px;
   --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -84,6 +84,6 @@ button {
 @media (max-width: 768px) {
   :root {
     --section-padding: 80px;
-    --nav-height: 84px;
+    --nav-height: 92px;
   }
 }
