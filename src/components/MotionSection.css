@@ -1,0 +1,110 @@
+.motion-section {
+  position: relative;
+  isolation: isolate;
+}
+
+.motion-section__ambient {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.motion-section__content {
+  position: relative;
+  z-index: 1;
+}
+
+.motion-section__grid {
+  position: absolute;
+  inset: -20%;
+  background-image:
+    linear-gradient(rgba(236, 236, 236, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(236, 236, 236, 0.5) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.25;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 15%, transparent 75%);
+}
+
+.motion-section__orb {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 207, 0, 0.15);
+  animation: sectionOrbFloat 18s ease-in-out infinite;
+}
+
+.motion-section__orb--1 {
+  width: 280px;
+  height: 280px;
+  top: 10%;
+  right: -4%;
+  transform: rotateX(60deg);
+}
+
+.motion-section__orb--2 {
+  width: 180px;
+  height: 180px;
+  bottom: 8%;
+  left: -2%;
+  animation-delay: -6s;
+  border-color: rgba(17, 17, 17, 0.06);
+}
+
+.motion-section.cs-section {
+  padding: var(--section-padding) 0;
+}
+
+.motion-section.cs-section--compact {
+  padding: 80px 0;
+}
+
+.motion-section.work-intro-section {
+  padding: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.motion-section--alt {
+  background: rgba(250, 250, 250, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.motion-section:not(.motion-section--alt) {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.motion-section--work .motion-section__orb--1 {
+  width: 360px;
+  height: 360px;
+  top: 20%;
+  left: -8%;
+  right: auto;
+}
+
+.motion-section--stats {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.motion-section--contact .motion-section__orb--1 {
+  width: 320px;
+  height: 320px;
+  top: auto;
+  bottom: 5%;
+  right: 8%;
+}
+
+@keyframes sectionOrbFloat {
+  0%, 100% { transform: rotateX(65deg) translateY(0) rotateZ(0deg); }
+  50% { transform: rotateX(65deg) translateY(-16px) rotateZ(12deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-section__orb {
+    animation: none;
+  }
+}

@@ -1,0 +1,45 @@
+/* Site-wide 3D motion design tokens */
+
+.site-main {
+  position: relative;
+  z-index: 1;
+}
+
+/* 3D interactive cards */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s ease;
+  will-change: transform;
+}
+
+.card-3d:hover {
+  transform: perspective(900px) rotateX(5deg) rotateY(-5deg) translateZ(14px);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    0 24px 56px rgba(0, 0, 0, 0.09);
+}
+
+/* Glass panels over motion background */
+.panel-3d {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(236, 236, 236, 0.9);
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 12px 40px rgba(0, 0, 0, 0.05);
+  transform-style: preserve-3d;
+}
+
+/* Depth lift on section headings */
+.heading-3d {
+  transform: perspective(800px) translateZ(0);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-3d:hover {
+    transform: none;
+  }
+}

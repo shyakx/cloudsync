@@ -1,0 +1,277 @@
+.hms {
+  display: flex;
+  width: 1280px;
+  height: 800px;
+  min-height: unset;
+  background: #fff;
+  overflow: hidden;
+  font-size: 15px;
+  color: #111;
+  text-align: left;
+}
+
+.hms__sidebar {
+  width: 210px;
+  flex-shrink: 0;
+  background: #FAFAFA;
+  border-right: 1px solid #ECECEC;
+  padding: 16px 12px;
+}
+
+.hms__brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hms__logo {
+  width: 32px;
+  height: 32px;
+  background: #0EA5E9;
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hms__brand strong { display: block; font-size: 12px; }
+.hms__brand span { font-size: 12px; color: #666; }
+
+.hms__nav { display: flex; flex-direction: column; gap: 2px; }
+
+.hms__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #666;
+  font-weight: 500;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.hms__nav-item--active {
+  background: #fff;
+  color: #111;
+  border: 1px solid #ECECEC;
+}
+
+.hms__main { flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; }
+.hms__content { padding: 20px 22px; flex: 1; min-height: 0; overflow: hidden; }
+
+.hms__topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.hms__search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #FAFAFA;
+  border: 1px solid #ECECEC;
+  border-radius: 8px;
+  color: #999;
+  font-size: 12px;
+}
+
+.hms__notif-btn {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ECECEC;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.hms__notif-btn span {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  background: #EF4444;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hms__user { display: flex; align-items: center; gap: 8px; }
+.hms__avatar {
+  width: 28px; height: 28px; border-radius: 6px;
+  background: #0EA5E9; color: #fff; font-size: 9px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.hms__user strong { display: block; font-size: 10px; }
+.hms__user span { font-size: 9px; color: #666; }
+
+
+.hms__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.hms__stat {
+  padding: 12px;
+  background: #FAFAFA;
+  border: 1px solid #ECECEC;
+  border-radius: 10px;
+}
+
+.hms__stat span { display: block; font-size: 9px; color: #666; }
+.hms__stat strong { display: block; font-size: 22px; font-weight: 700; margin: 2px 0; }
+.hms__stat small { font-size: 9px; color: #666; }
+.hms__stat--accent { background: rgba(14, 165, 233, 0.06); border-color: rgba(14, 165, 233, 0.2); }
+
+.hms__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.hms__panel {
+  background: #fff;
+  border: 1px solid #ECECEC;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.hms__panel--wide { grid-column: 1 / -1; }
+
+.hms__panel h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hms__subhead { margin-top: 14px !important; }
+
+.hms__queue-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.hms__queue-avatar {
+  width: 28px; height: 28px; border-radius: 6px;
+  background: #F0F9FF; color: #0369A1; font-size: 9px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.hms__queue-item strong { display: block; font-size: 10px; }
+.hms__queue-item span { font-size: 9px; color: #666; }
+.hms__wait { margin-left: auto; font-size: 9px; font-weight: 600; color: #EA580C; }
+
+.hms__sched-item {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #F5F5F5;
+  font-size: 12px;
+}
+
+.hms__sched-item strong { color: #666; font-size: 9px; }
+.hms__sched-item span { display: block; font-weight: 600; }
+.hms__sched-item small { font-size: 9px; color: #666; }
+
+.hms__status {
+  font-size: 8px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+
+.hms__status--in-progress { background: #FEF3C7; color: #B45309; }
+.hms__status--next { background: #DBEAFE; color: #1D4ED8; }
+.hms__status--scheduled { background: #F5F5F5; color: #666; }
+
+.hms__bed-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 36px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.hms__bed-bar {
+  height: 6px;
+  background: #F0F0F0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.hms__bed-bar div { height: 100%; background: #0EA5E9; border-radius: 3px; }
+
+.hms__lab-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #F5F5F5;
+  font-size: 12px;
+}
+
+.hms__lab-urgent { color: #DC2626; font-weight: 600; font-size: 9px; }
+.hms__lab-done { color: #16A34A; font-weight: 600; font-size: 9px; }
+.hms__lab-pending { color: #EA580C; font-weight: 600; font-size: 9px; }
+
+.hms__pharmacy {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.hms__pharmacy div {
+  padding: 8px;
+  background: #FAFAFA;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.hms__pharmacy span { display: block; font-size: 9px; color: #666; }
+.hms__pharmacy strong { font-size: 14px; font-weight: 700; }
+.hms__alert { color: #DC2626 !important; }
+
+.hms__bill-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #F5F5F5;
+  font-size: 12px;
+}
+
+.hms__bill-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  margin-top: 6px;
+  border-top: 1px solid #ECECEC;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .hms__stats { grid-template-columns: repeat(2, 1fr); }
+  .hms__grid { grid-template-columns: 1fr; }
+}

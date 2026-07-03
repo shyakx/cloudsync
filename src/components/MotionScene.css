@@ -1,0 +1,107 @@
+.motion-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.motion-scene__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.motion-scene__plane {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 140%;
+  height: 140%;
+  margin-left: -70%;
+  margin-top: -70%;
+  background:
+    linear-gradient(rgba(236, 236, 236, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(236, 236, 236, 0.5) 1px, transparent 1px);
+  background-size: 56px 56px;
+  transform: perspective(900px) rotateX(72deg) rotateZ(12deg);
+  transform-origin: center center;
+  animation: planeDrift 28s linear infinite;
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse 55% 45% at 50% 50%, #000 15%, transparent 72%);
+}
+
+.motion-scene__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(17, 17, 17, 0.06);
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%);
+}
+
+.motion-scene__ring--1 {
+  width: min(72vw, 680px);
+  height: min(72vw, 680px);
+  animation: ringSpin 36s linear infinite;
+}
+
+.motion-scene__ring--2 {
+  width: min(52vw, 480px);
+  height: min(52vw, 480px);
+  border-color: rgba(255, 207, 0, 0.18);
+  animation: ringSpin 24s linear infinite reverse;
+}
+
+.motion-scene__ring--1::after,
+.motion-scene__ring--2::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: -5px;
+  left: 50%;
+  margin-left: -5px;
+}
+
+.motion-scene__ring--1::after {
+  background: rgba(17, 17, 17, 0.2);
+}
+
+.motion-scene__ring--2::after {
+  background: var(--primary);
+  box-shadow: 0 0 16px rgba(255, 207, 0, 0.5);
+}
+
+.motion-scene__fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 55%,
+    rgba(255, 255, 255, 0.95) 88%,
+    #fff 100%
+  );
+}
+
+@keyframes planeDrift {
+  from { transform: perspective(900px) rotateX(72deg) rotateZ(12deg) translateY(0); }
+  to { transform: perspective(900px) rotateX(72deg) rotateZ(12deg) translateY(56px); }
+}
+
+@keyframes ringSpin {
+  from { transform: translate(-50%, -50%) rotateX(68deg) rotateZ(0deg); }
+  to { transform: translate(-50%, -50%) rotateX(68deg) rotateZ(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-scene__plane,
+  .motion-scene__ring--1,
+  .motion-scene__ring--2 {
+    animation: none;
+  }
+}

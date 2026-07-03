@@ -1,0 +1,101 @@
+.why-visual__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.why-visual__card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.why-visual__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.why-visual__mockup {
+  background: var(--bg-secondary);
+  padding: 32px;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-visual__photo {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.why-visual__photo img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  filter: grayscale(20%);
+}
+
+.why-visual__overlay-device {
+  position: absolute;
+  bottom: -20px;
+  right: 24px;
+  width: 180px;
+  box-shadow: var(--shadow-hover);
+}
+
+.why-visual__overlay-device--small {
+  width: 120px;
+  bottom: -16px;
+  right: 16px;
+}
+
+.why-visual__screens {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.why-visual__screens .device--macbook {
+  flex: 1;
+}
+
+.why-visual__screens .device--iphone {
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.why-visual__infra {
+  width: 100%;
+  max-width: 360px;
+}
+
+.why-visual__text {
+  padding: 28px 32px 32px;
+}
+
+.why-visual__text h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.why-visual__text p {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .why-visual__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,323 @@
+.mba {
+  display: flex;
+  justify-content: center;
+  width: 390px;
+  height: 844px;
+  background: #fff;
+}
+
+.mba__phone {
+  width: 390px;
+  height: 844px;
+  background: #fff;
+  border-radius: 44px;
+  border: 4px solid #1a1a1a;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
+  font-size: 15px;
+  color: #111;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.mba__status-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 24px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.mba__status-icons {
+  width: 56px;
+  height: 12px;
+  background: #ECECEC;
+  border-radius: 3px;
+}
+
+.mba__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 22px 18px;
+  flex-shrink: 0;
+}
+
+.mba__header span {
+  font-size: 13px;
+  color: #666;
+}
+
+.mba__header h2 {
+  margin: 4px 0 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.mba__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mba__balance-card {
+  margin: 0 20px 18px;
+  padding: 22px;
+  background: #111;
+  color: #fff;
+  border-radius: 18px;
+  flex-shrink: 0;
+}
+
+.mba__balance-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.mba__balance-top span {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+}
+
+.mba__eye {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  cursor: default;
+  padding: 0;
+}
+
+.mba__balance-card strong {
+  display: block;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.mba__balance-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+}
+
+.mba__growth {
+  color: #4ADE80 !important;
+}
+
+.mba__actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 0 20px 18px;
+  flex-shrink: 0;
+}
+
+.mba__action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 6px;
+  background: #FAFAFA;
+  border: 1px solid #ECECEC;
+  border-radius: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #111;
+  cursor: default;
+}
+
+.mba__action--primary {
+  background: rgba(255, 207, 0, 0.15);
+  border-color: rgba(255, 207, 0, 0.4);
+}
+
+.mba__section {
+  padding: 0 20px 14px;
+  flex-shrink: 0;
+}
+
+.mba__section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.mba__section-head h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.mba__section-head a,
+.mba__section-head span {
+  font-size: 12px;
+  color: #666;
+  text-decoration: none;
+}
+
+.mba__card-visual {
+  padding: 18px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+  border-radius: 16px;
+  color: #fff;
+  min-height: 110px;
+}
+
+.mba__card-chip {
+  width: 32px;
+  height: 22px;
+  background: rgba(255, 207, 0, 0.6);
+  border-radius: 5px;
+  margin-bottom: 18px;
+}
+
+.mba__card-number {
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+}
+
+.mba__card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+}
+
+.mba__goal {
+  margin-bottom: 12px;
+}
+
+.mba__goal-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.mba__goal-info strong {
+  font-weight: 600;
+}
+
+.mba__goal-info span {
+  color: #666;
+}
+
+.mba__goal-bar {
+  height: 7px;
+  background: #F0F0F0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mba__goal-bar div {
+  height: 100%;
+  background: #FFCF00;
+  border-radius: 4px;
+}
+
+.mba__section--scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: 8px;
+}
+
+.mba__txn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.mba__txn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.mba__txn-icon--out {
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+.mba__txn-icon--in {
+  background: #F0FDF4;
+  color: #16A34A;
+}
+
+.mba__txn-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mba__txn-info strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mba__txn-info span {
+  font-size: 11px;
+  color: #666;
+}
+
+.mba__txn-amount {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.mba__txn-amount--debit { color: #111; }
+.mba__txn-amount--credit { color: #16A34A; }
+
+.mba__tabbar {
+  display: flex;
+  border-top: 1px solid #ECECEC;
+  padding: 10px 0 16px;
+  background: #fff;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.mba__tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  font-size: 10px;
+  color: #999;
+  cursor: default;
+  padding: 4px;
+}
+
+.mba__tab--active {
+  color: #111;
+  font-weight: 600;
+}

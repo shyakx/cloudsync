@@ -1,0 +1,72 @@
+.site-motion {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.site-motion__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.site-motion__plane {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  width: 160%;
+  height: 160%;
+  margin-left: -80%;
+  margin-top: -80%;
+  background:
+    linear-gradient(rgba(236, 236, 236, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(236, 236, 236, 0.35) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: perspective(1000px) rotateX(74deg) rotateZ(8deg);
+  animation: sitePlaneDrift 32s linear infinite;
+  opacity: 0.4;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 10%, transparent 70%);
+}
+
+.site-motion__ring {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  border-radius: 50%;
+  border: 1px solid rgba(17, 17, 17, 0.05);
+  transform: translate(-50%, -50%);
+}
+
+.site-motion__ring--a {
+  width: min(90vw, 900px);
+  height: min(90vw, 900px);
+  animation: siteRingSpin 40s linear infinite;
+}
+
+.site-motion__ring--b {
+  width: min(60vw, 600px);
+  height: min(60vw, 600px);
+  border-color: rgba(255, 207, 0, 0.12);
+  animation: siteRingSpin 28s linear infinite reverse;
+}
+
+@keyframes sitePlaneDrift {
+  from { transform: perspective(1000px) rotateX(74deg) rotateZ(8deg) translateY(0); }
+  to { transform: perspective(1000px) rotateX(74deg) rotateZ(8deg) translateY(64px); }
+}
+
+@keyframes siteRingSpin {
+  from { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(0deg); }
+  to { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-motion__plane,
+  .site-motion__ring--a,
+  .site-motion__ring--b {
+    animation: none;
+  }
+}

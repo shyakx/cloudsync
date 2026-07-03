@@ -1,0 +1,127 @@
+.product-gallery {
+  height: 400vh;
+  position: relative;
+}
+
+.product-gallery__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.product-gallery__sticky .section-heading {
+  margin-bottom: 40px;
+}
+
+.product-gallery__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.product-gallery__track {
+  display: flex;
+  gap: 48px;
+  padding: 0 max(24px, calc((100vw - var(--max-width)) / 2 + 24px));
+  will-change: transform;
+  transition: transform 0.05s linear;
+}
+
+.product-gallery__slide {
+  flex: 0 0 min(70vw, 640px);
+}
+
+.product-gallery__slide-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.product-gallery__index {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.product-gallery__device {
+  transition: transform 0.4s ease;
+}
+
+.product-gallery__slide:hover .product-gallery__device {
+  transform: translateY(-6px);
+}
+
+.product-gallery__caption h3 {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 4px 0 0;
+}
+
+.product-gallery__label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.product-gallery__hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .product-gallery {
+    height: auto;
+  }
+
+  .product-gallery__sticky {
+    position: relative;
+    height: auto;
+    padding: var(--section-padding) 0;
+  }
+
+  .product-gallery__track {
+    flex-direction: column;
+    transform: none !important;
+    padding: 0 24px;
+  }
+
+  .product-gallery__slide {
+    flex: none;
+    width: 100%;
+  }
+
+  .product-gallery__hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-gallery {
+    height: auto;
+  }
+
+  .product-gallery__sticky {
+    position: relative;
+    height: auto;
+  }
+
+  .product-gallery__track {
+    flex-direction: column;
+    transform: none !important;
+  }
+}

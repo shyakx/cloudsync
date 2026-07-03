@@ -1,0 +1,131 @@
+.hero-showcase {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  perspective: 1200px;
+}
+
+.hero-showcase__stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.hero-showcase__device {
+  position: absolute;
+  animation: heroFloat 6s ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.08));
+}
+
+.hero-showcase__device:hover {
+  transform: translateY(-12px) scale(1.03) !important;
+  z-index: 20 !important;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.12));
+}
+
+/* Positioning — Apple-style composition */
+.hero-device--erp {
+  width: 280px;
+  top: 8%;
+  left: 18%;
+  z-index: 5;
+  transform: rotateY(-8deg) rotateX(4deg);
+}
+
+.hero-device--banking {
+  width: 100px;
+  top: 5%;
+  right: 12%;
+  z-index: 10;
+  transform: rotateY(12deg) rotateX(-2deg);
+}
+
+.hero-device--hospital {
+  width: 140px;
+  top: 42%;
+  left: 2%;
+  z-index: 8;
+  transform: rotateY(15deg) rotateX(6deg);
+}
+
+.hero-device--analytics {
+  width: 220px;
+  top: 50%;
+  right: 5%;
+  z-index: 4;
+  transform: rotateY(-12deg) rotateX(3deg);
+}
+
+.hero-device--school {
+  width: 200px;
+  top: 28%;
+  left: 42%;
+  z-index: 6;
+  transform: rotateY(-4deg) rotateX(8deg);
+}
+
+.hero-device--delivery {
+  width: 90px;
+  bottom: 8%;
+  left: 28%;
+  z-index: 11;
+  transform: rotateY(-10deg);
+}
+
+.hero-device--business {
+  width: 200px;
+  bottom: 5%;
+  right: 18%;
+  z-index: 3;
+  transform: rotateY(8deg) rotateX(-4deg);
+}
+
+.hero-device--fleet {
+  width: 130px;
+  top: 18%;
+  right: 38%;
+  z-index: 7;
+  transform: rotateY(-6deg) rotateX(5deg);
+}
+
+@keyframes heroFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
+@media (max-width: 992px) {
+  .hero-showcase {
+    height: 400px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .hero-device--erp { width: 200px; left: 10%; }
+  .hero-device--banking { width: 80px; right: 5%; }
+  .hero-device--hospital { width: 110px; }
+  .hero-device--analytics { width: 160px; }
+  .hero-device--school { width: 150px; left: 35%; }
+  .hero-device--delivery { width: 75px; }
+  .hero-device--business { width: 150px; }
+  .hero-device--fleet { width: 100px; }
+}
+
+@media (max-width: 576px) {
+  .hero-showcase {
+    height: 340px;
+  }
+
+  .hero-device--fleet,
+  .hero-device--business {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-showcase__device {
+    animation: none;
+  }
+}

@@ -1,0 +1,58 @@
+/* Product UI canvases — design size, scaled inside device frames */
+
+.app-ui {
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-ui--desktop {
+  width: 1280px;
+  height: 800px;
+  font-size: 14px;
+  line-height: 1.45;
+  overflow: hidden;
+}
+
+.app-ui--mobile {
+  width: 390px;
+  height: 844px;
+  font-size: 15px;
+  line-height: 1.45;
+  overflow: hidden;
+}
+
+/* Desktop apps fill the display exactly */
+.ps-laptop__ui .ems,
+.ps-laptop__ui .hms,
+.ps-laptop__ui .sch {
+  width: 1280px;
+  height: 800px;
+  min-height: 800px;
+  max-height: 800px;
+  border: none;
+  border-radius: 0;
+}
+
+/* Mobile: frame is the device — strip inner phone chrome */
+.ps-phone__ui .mba {
+  width: 390px;
+  height: 844px;
+  padding: 0;
+  background: #fff;
+}
+
+.ps-phone__ui .mba__phone {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: #fff;
+}
+
+.ps-phone__ui .mba__status-bar {
+  padding-top: 36px;
+}
+
+/* Legacy frame selectors (unused) */

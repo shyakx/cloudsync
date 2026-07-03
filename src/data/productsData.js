@@ -1,0 +1,38 @@
+export const products = [
+  {
+    id: 'enterprise',
+    title: 'Enterprise Management System',
+    description: 'Unified operations platform for finance, HR, inventory, and executive reporting.',
+    tags: ['React', 'Node.js', 'PostgreSQL', 'Redis'],
+    device: 'desktop',
+    component: 'EnterpriseDashboard',
+    featured: true,
+  },
+  {
+    id: 'banking',
+    title: 'Mobile Banking App',
+    description: 'Secure digital banking with transfers, bills, QR payments, and savings goals.',
+    tags: ['React Native', 'Node.js', 'PostgreSQL', 'AWS'],
+    device: 'mobile',
+    component: 'MobileBankingApp',
+    featured: false,
+  },
+  {
+    id: 'hospital',
+    title: 'Hospital Management System',
+    description: 'End-to-end clinical workflows from patient intake to billing and pharmacy.',
+    tags: ['React', 'Python', 'PostgreSQL', 'HL7 FHIR'],
+    device: 'desktop',
+    component: 'HospitalSystem',
+    featured: false,
+  },
+  {
+    id: 'school',
+    title: 'School Management Platform',
+    description: 'Academic operations hub for attendance, grades, fees, and parent communication.',
+    tags: ['Next.js', 'Supabase', 'TypeScript', 'Tailwind'],
+    device: 'desktop',
+    component: 'SchoolPlatform',
+    featured: false,
+  },
+];

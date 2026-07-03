@@ -1,0 +1,122 @@
+.case-studies__list {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.case-study {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.case-study--reverse .case-study__visual {
+  order: 2;
+}
+
+.case-study--reverse .case-study__content {
+  order: 1;
+}
+
+.case-study__visual {
+  transition: transform 0.5s ease;
+}
+
+.case-study:hover .case-study__visual {
+  transform: translateY(-8px);
+}
+
+.case-study__industry {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.case-study__content h3 {
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 8px 0 32px;
+}
+
+.case-study__block {
+  margin-bottom: 20px;
+}
+
+.case-study__block h4 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 0 0 6px;
+}
+
+.case-study__block p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.case-study__metrics {
+  display: flex;
+  gap: 32px;
+  margin: 32px 0 24px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.case-study__metric-value {
+  display: block;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.case-study__metric-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.case-study__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: gap var(--transition);
+}
+
+.case-study__cta:hover {
+  gap: 10px;
+}
+
+@media (max-width: 992px) {
+  .case-study,
+  .case-study--reverse {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .case-study--reverse .case-study__visual,
+  .case-study--reverse .case-study__content {
+    order: unset;
+  }
+
+  .case-studies__list {
+    gap: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .case-study__metrics {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

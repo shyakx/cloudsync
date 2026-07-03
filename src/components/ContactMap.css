@@ -1,0 +1,246 @@
+.contact-map-section {
+  margin-top: 64px;
+}
+
+.contact-map {
+  position: relative;
+  width: 100%;
+  height: clamp(360px, 42vw, 520px);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.02),
+    0 8px 32px rgba(0, 0, 0, 0.06);
+  transform-style: preserve-3d;
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+.contact-map:hover {
+  transform: perspective(1000px) rotateX(2deg);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.contact-map__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.contact-map__media iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  filter: saturate(0.12) contrast(1.05) brightness(1.02);
+  transition: filter 0.4s ease;
+}
+
+.contact-map__media--active iframe {
+  filter: saturate(1) contrast(1) brightness(1);
+}
+
+.contact-map__activate {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: var(--shadow-hover);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.contact-map__activate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.contact-map__pin {
+  position: absolute;
+  top: 50%;
+  left: 58%;
+  transform: translate(-50%, -100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.contact-map__pin-dot {
+  display: block;
+  width: 14px;
+  height: 14px;
+  background: var(--primary);
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.contact-map__pin-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50%;
+  background: rgba(255, 207, 0, 0.25);
+  animation: mapPinPulse 2.5s ease-out infinite;
+}
+
+@keyframes mapPinPulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.contact-map__card {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 3;
+  width: min(300px, calc(100% - 48px));
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hover);
+}
+
+.contact-map__card-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 207, 0, 0.12);
+  border: 1px solid rgba(255, 207, 0, 0.25);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.contact-map__card-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.contact-map__card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+
+.contact-map__card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.contact-map__hours {
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.contact-map__hours strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.contact-map__hours span {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.contact-map__directions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  transition: gap var(--transition), color var(--transition);
+}
+
+.contact-map__directions:hover {
+  gap: 12px;
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .contact-map-section {
+    margin-top: 48px;
+  }
+
+  .contact-map {
+    height: clamp(320px, 70vw, 420px);
+  }
+
+  .contact-map__card {
+    top: auto;
+    bottom: 72px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    padding: 18px;
+  }
+
+  .contact-map__card h3 {
+    font-size: 16px;
+  }
+
+  .contact-map__hours {
+    display: none;
+  }
+
+  .contact-map__activate {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    justify-content: center;
+  }
+
+  .contact-map__pin {
+    left: 50%;
+    top: 42%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-map__pin-pulse {
+    animation: none;
+    opacity: 0.4;
+  }
+}

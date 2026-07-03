@@ -1,0 +1,153 @@
+/* Device Frames */
+.device {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.device--tilt:hover {
+  transform: translateY(-8px) rotateX(2deg) rotateY(-3deg);
+}
+
+/* MacBook / Laptop */
+.device--macbook,
+.device--laptop {
+  width: 100%;
+}
+
+.device__laptop-lid {
+  background: #1a1a1a;
+  border-radius: 12px 12px 0 0;
+  padding: 8px 8px 0;
+  border: 1px solid #333;
+}
+
+.device__laptop-camera {
+  width: 6px;
+  height: 6px;
+  background: #333;
+  border-radius: 50%;
+  margin: 0 auto 6px;
+}
+
+.device__laptop-screen {
+  background: var(--bg);
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+}
+
+.device__laptop-base {
+  height: 10px;
+  background: linear-gradient(180deg, #d4d4d4, #a8a8a8);
+  border-radius: 0 0 8px 8px;
+  margin: 0 8px;
+}
+
+.device__laptop-shadow {
+  height: 8px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.12), transparent 70%);
+  margin-top: 4px;
+}
+
+/* Monitor */
+.device--monitor {
+  width: 100%;
+}
+
+.device__monitor-bezel {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid #333;
+}
+
+.device__monitor-screen {
+  background: var(--bg);
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+}
+
+.device__monitor-neck {
+  width: 40px;
+  height: 24px;
+  background: #c4c4c4;
+  margin: 0 auto;
+}
+
+.device__monitor-stand {
+  width: 80px;
+  height: 6px;
+  background: #a8a8a8;
+  border-radius: 0 0 4px 4px;
+  margin: 0 auto;
+}
+
+/* iPhone */
+.device--iphone {
+  width: 120px;
+}
+
+.device__iphone-notch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 14px;
+  background: #1a1a1a;
+  border-radius: 0 0 10px 10px;
+  z-index: 2;
+}
+
+.device__iphone-screen {
+  background: #1a1a1a;
+  border-radius: 24px;
+  padding: 10px 6px;
+  border: 2px solid #333;
+  overflow: hidden;
+  aspect-ratio: 9/19;
+}
+
+.device__iphone-home {
+  width: 36px;
+  height: 4px;
+  background: #555;
+  border-radius: 2px;
+  margin: 6px auto 0;
+}
+
+/* Tablet */
+.device--tablet {
+  width: 160px;
+}
+
+.device__tablet-camera {
+  width: 6px;
+  height: 6px;
+  background: #333;
+  border-radius: 50%;
+  margin: 0 auto 6px;
+}
+
+.device__tablet-screen {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 12px 8px;
+  border: 2px solid #333;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+
+.device--iphone .ui-mobile,
+.device__tablet-screen .ui-screen,
+.device__laptop-screen .ui-screen,
+.device__monitor-screen .ui-screen {
+  border-radius: 2px;
+  height: 100%;
+}
+
+.device--iphone .ui-mobile {
+  border-radius: 16px;
+  min-height: 100%;
+}
