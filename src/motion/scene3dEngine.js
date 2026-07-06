@@ -124,7 +124,11 @@ function getIcoVerts(scale) {
   ].map(([x, y, z]) => ({ x: x * s, y: y * s, z: z * s }));
 }
 
-function renderShapeScene(ctx, shapes, cx, cy, state, config) {
+function sceneScale(width, height, base = 420) {
+  return Math.min(width, height) / base;
+}
+
+function renderShapeScene(ctx, shapes, cx, cy, state, config, offsetScale = 1) {
   const { angleY, angleX, time, reducedMotion } = state;
   const { focal } = config;
 
@@ -135,11 +139,16 @@ function renderShapeScene(ctx, shapes, cx, cy, state, config) {
 
     let verts;
     let edges;
+    const ox = shape.ox * offsetScale;
+    const oy = shape.oy * offsetScale;
+    const oz = shape.oz * offsetScale;
+    const sizeScale = offsetScale;
+
     if (shape.type === 'ico') {
-      verts = rotateVerts(getIcoVerts(shape.scale || 1), rotY, rotX, shape.ox, shape.oy, shape.oz);
+      verts = rotateVerts(getIcoVerts((shape.scale || 1) * sizeScale), rotY, rotX, ox, oy, oz);
       edges = ICO_EDGES;
     } else {
-      verts = rotateVerts(cubeVerts(shape.size), rotY, rotX, shape.ox, shape.oy, shape.oz);
+      verts = rotateVerts(cubeVerts(shape.size * sizeScale), rotY, rotX, ox, oy, oz);
       edges = CUBE_EDGES;
     }
 
@@ -174,7 +183,8 @@ export function drawHeroGeometricScene(ctx, width, height, state, config = HERO_
   ctx.fillStyle = glow;
   ctx.fillRect(0, 0, width, height);
 
-  renderShapeScene(ctx, HERO_SHAPES, cx, cy, state, config);
+  const offsetScale = Math.min(1, sceneScale(width, height, 420));
+  renderShapeScene(ctx, HERO_SHAPES, cx, cy, state, config, offsetScale);
 
   return {
     nextAngleY: angleY + (reducedMotion ? 0 : config.speed),
@@ -200,7 +210,8 @@ export function drawGeometricScene(ctx, width, height, state, config = GEO_PRESE
   ctx.fillStyle = glow;
   ctx.fillRect(0, 0, width, height);
 
-  renderShapeScene(ctx, SHAPES, cx, cy, state, config);
+  const offsetScale = Math.min(1, sceneScale(width, height, 900));
+  renderShapeScene(ctx, SHAPES, cx, cy, state, config, offsetScale);
 
   return {
     nextAngleY: angleY + (reducedMotion ? 0 : config.speed),

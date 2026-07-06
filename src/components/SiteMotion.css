@@ -84,6 +84,12 @@
   50% { transform: rotateX(62deg) rotateZ(42deg) translateY(-14px); opacity: 1; }
 }
 
+@media (max-width: 960px) {
+  .site-motion {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .site-motion--geo .site-motion__beam,
   .site-motion--geo .site-motion__shard {

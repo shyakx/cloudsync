@@ -146,7 +146,20 @@
 
 @media (max-width: 960px) {
   .ps-laptop {
-    transform: rotateX(2deg);
+    transform: none;
+    filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.1));
+  }
+
+  .ps-device--laptop:hover .ps-laptop {
+    transform: none;
+  }
+
+  .ps-phone {
+    transform: none;
+  }
+
+  .ps-device--laptop {
+    perspective: none;
   }
 }
 

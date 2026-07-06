@@ -13,6 +13,9 @@ const SiteMotion = () => {
     const shell = shellRef.current;
     if (!canvas || !shell) return;
 
+    const mobileQuery = window.matchMedia('(max-width: 960px)');
+    if (mobileQuery.matches) return undefined;
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 

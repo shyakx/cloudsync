@@ -2,6 +2,8 @@
   position: relative;
   width: min(420px, 90vw);
   height: min(420px, 90vw);
+  overflow: hidden;
+  contain: layout paint;
 }
 
 .hero-geo__scene {
@@ -182,6 +184,27 @@
 @keyframes heroPrismFloat {
   0%, 100% { transform: rotateX(58deg) rotateZ(30deg) translateY(0); }
   50% { transform: rotateX(64deg) rotateZ(38deg) translateY(-10px); }
+}
+
+@media (max-width: 960px) {
+  .hero-geo {
+    width: min(280px, 76vw);
+    height: min(280px, 76vw);
+    margin: 0 auto;
+  }
+
+  .hero-geo__scene {
+    animation: none;
+    transform: none;
+    perspective: none;
+  }
+
+  .hero-geo__ring,
+  .hero-geo__cube,
+  .hero-geo__prism,
+  .hero-geo__canvas {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

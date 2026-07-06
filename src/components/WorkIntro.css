@@ -69,6 +69,13 @@
   color: var(--text-muted);
 }
 
+@media (max-width: 960px) {
+  .work-intro__inner:hover {
+    transform: none;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.05);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .work-intro__inner:hover {
     transform: none;
